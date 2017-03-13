@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour {
 
     public static SoundManager instance;
 
-    public List<AudioClip> m_AudioClip;
+    public Dictionary<string,AudioClip> m_AudioClip;
 
     // Use this for initialization
     void Awake () {

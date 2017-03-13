@@ -89,15 +89,31 @@
     <Compile Include="Assets\ProtoType\AllStarCharacterLibrary\Scripts\SkinnedMeshCombiner.cs" />
     <Compile Include="Assets\ProtoType\Controller.cs" />
     <Compile Include="Assets\ProtoType\GameManager.cs" />
-    <Compile Include="Assets\Script\FramWork\AssetBundles.cs" />
-    <Compile Include="Assets\Script\FramWork\LoadAssetBundle.cs" />
-    <Compile Include="Assets\Script\FramWork\SoundManager.cs" />
+    <Compile Include="Assets\__Script\FramWork\AssetBundles.cs" />
+    <Compile Include="Assets\__Script\FramWork\DocsDown.cs" />
+    <Compile Include="Assets\__Script\FramWork\GameDefine.cs" />
+    <Compile Include="Assets\__Script\FramWork\GamePath.cs" />
+    <Compile Include="Assets\__Script\FramWork\GoogleSheet\UnitySerializerVersion.cs" />
+    <Compile Include="Assets\__Script\FramWork\GoogleSheet\Utils.cs" />
+    <Compile Include="Assets\__Script\FramWork\GoogleSheet\WWWData.cs" />
+    <Compile Include="Assets\__Script\FramWork\LitJson\IJsonWrapper.cs" />
+    <Compile Include="Assets\__Script\FramWork\LitJson\JsonData.cs" />
+    <Compile Include="Assets\__Script\FramWork\LitJson\JsonException.cs" />
+    <Compile Include="Assets\__Script\FramWork\LitJson\JsonMapper.cs" />
+    <Compile Include="Assets\__Script\FramWork\LitJson\JsonMockWrapper.cs" />
+    <Compile Include="Assets\__Script\FramWork\LitJson\JsonReader.cs" />
+    <Compile Include="Assets\__Script\FramWork\LitJson\JsonWriter.cs" />
+    <Compile Include="Assets\__Script\FramWork\LitJson\Lexer.cs" />
+    <Compile Include="Assets\__Script\FramWork\LitJson\ParserToken.cs" />
+    <Compile Include="Assets\__Script\FramWork\LoadAssetBundle.cs" />
+    <Compile Include="Assets\__Script\FramWork\SoundManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Prefab\Common\temp.txt" />
-    <None Include="Assets\Script\InGame\temp.txt" />
-    <None Include="Assets\Script\OutGame\temp.txt" />
+    <None Include="Assets\Resources\config\0.txt" />
     <None Include="Assets\_GraphicResources\_New\temp.txt" />
+    <None Include="Assets\__Script\InGame\temp.txt" />
+    <None Include="Assets\__Script\OutGame\temp.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

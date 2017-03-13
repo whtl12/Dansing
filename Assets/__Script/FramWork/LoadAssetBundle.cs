@@ -35,10 +35,11 @@ public class LoadAssetBundle : MonoBehaviour {
             AssetBundle bundle = www.assetBundle;
 
             Object[] SoundLoad = bundle.LoadAllAssets();
-            List<AudioClip> Audio = new List<AudioClip>();
+            Dictionary<string,AudioClip> Audio = new Dictionary<string, AudioClip>();
             for(int i = 0; i < SoundLoad.Length; i++)
             {
-                Audio.Add((AudioClip)SoundLoad[i]);
+                AudioClip audio = (AudioClip)SoundLoad[i];
+                Audio.Add(audio.name, audio);
             }
 
             SoundManager.instance.m_AudioClip = Audio;
