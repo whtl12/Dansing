@@ -12,7 +12,7 @@ public class SoundManager : MonoBehaviour {
     // Use this for initialization
     void Awake () {
         instance = this;
-
+        DontDestroyOnLoad(this);
 
     }
 	

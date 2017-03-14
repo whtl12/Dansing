@@ -5,7 +5,7 @@ using System.IO;
 
 public class DocsDown : MonoBehaviour {
 
-    enum DocsNumber
+    public enum DocsNumber
     {
         Sound = 0,
         Max
@@ -64,4 +64,6 @@ public class DocsDown : MonoBehaviour {
 
      
     }
+
+
 }

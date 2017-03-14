@@ -34,7 +34,7 @@ public class WWWData : MonoBehaviour
 
     public static void RequestReadFromGoogleDrive(int id, Callback OnDone)
     {
-        RequestReadFromGoogleDrive(GamePath.GoogleSheetKey, id, OnDone);
+        RequestReadFromGoogleDrive(GameDefine.GoogleSheetKey, id, OnDone);
     }
 
     public static bool useResources = false;
@@ -86,12 +86,12 @@ public class WWWData : MonoBehaviour
 
     public void DownloadAndSave(int id)
     {
-        DownloadAndSave(GamePath.GoogleSheetKey, id);
+        DownloadAndSave(GameDefine.GoogleSheetKey, id);
     }
 
     public void DownloadAndSave(string key, int id)
     {
-        string url = string.Format(GamePath.GoogleSheetBaseUrl, key, id);
+        string url = string.Format(GameDefine.GoogleSheetBaseUrl, key, id);
         WWW www = new WWW(url);
         while (www.isDone == false) ;
         string path = string.Format("{0}/Resources/config/{1}.txt", Application.dataPath, id);
@@ -127,7 +127,7 @@ public class WWWData : MonoBehaviour
     string content;
     IEnumerator ReadWithGid(string key, int id, Callback OnDone)
     {
-        string url = string.Format(GamePath.GoogleSheetBaseUrl, key, id);
+        string url = string.Format(GameDefine.GoogleSheetBaseUrl, key, id);
 
         while (true)
         {

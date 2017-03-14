@@ -89,6 +89,7 @@
     <Compile Include="Assets\ProtoType\AllStarCharacterLibrary\Scripts\SkinnedMeshCombiner.cs" />
     <Compile Include="Assets\ProtoType\Controller.cs" />
     <Compile Include="Assets\ProtoType\GameManager.cs" />
+    <Compile Include="Assets\__Script\DataTable\DataMgr.cs" />
     <Compile Include="Assets\__Script\FramWork\AssetBundles.cs" />
     <Compile Include="Assets\__Script\FramWork\DocsDown.cs" />
     <Compile Include="Assets\__Script\FramWork\GameDefine.cs" />
