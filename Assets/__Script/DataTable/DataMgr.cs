@@ -62,7 +62,7 @@ public class DataMgr : MonoBehaviour {
                     SoundInfo data = new SoundInfo(infos[i]);
                     m_soundTable.Add(data);
                 }
-
+                GameDefine.IsLoadAssetBundleOK = true;
             }
 
         });

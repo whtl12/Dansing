@@ -102,8 +102,7 @@ public class WWWData : MonoBehaviour
 
         string str = www.text;
 
-        if (GameDefine.isTableEncodedAsJson)
-            str = Utils.parseJson(str.Split(new char[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries));
+        str = Utils.parseJson(str.Split(new char[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries));
 
         File.WriteAllText(path, str);
 

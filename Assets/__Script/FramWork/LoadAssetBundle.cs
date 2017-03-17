@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class LoadAssetBundle : MonoBehaviour {
 
-    enum SoundName
-    {
-        Girl_s_dancing,
-        cinema,
-        MAX
-    }
 
     // 번들 다운 받을 서버의 주소(필자는 임시방편으로 로컬 파일 경로 쓸 것임)
     string BundleURL;//= Application.dataPath + "/StreamingAssets";// "jar:file://" + Application.dataPath + "!/assets/bundle.unity3d";
@@ -18,7 +12,11 @@ public class LoadAssetBundle : MonoBehaviour {
 
     void Start()
     {
-        BundleURL = "file://" + Application.dataPath + "/StreamingAssets/sound";// "jar:file://" + Application.dataPath + "!/assets/bundle.unity3d";
+#if UNITY_EDITOR
+        BundleURL = "file://" + Application.dataPath + "/StreamingAssets/sound";//
+#else
+        "jar:file://" + Application.dataPath + "!/StreamingAssets/sound.unity3d";// "jar:file://" + Application.dataPath + "!/assets/bundle.unity3d";
+#endif
         StartCoroutine(LoadBundles());
     }
 
@@ -47,8 +45,9 @@ public class LoadAssetBundle : MonoBehaviour {
             bundle.Unload(false);
 
             www.Dispose();
+            GameDefine.IsLoadAssetBundleOK = true;
 
-         
+
 
         }
     }

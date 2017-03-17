@@ -107,7 +107,9 @@
     <Compile Include="Assets\__Script\FramWork\LitJson\Lexer.cs" />
     <Compile Include="Assets\__Script\FramWork\LitJson\ParserToken.cs" />
     <Compile Include="Assets\__Script\FramWork\LoadAssetBundle.cs" />
+    <Compile Include="Assets\__Script\FramWork\PopupManager.cs" />
     <Compile Include="Assets\__Script\FramWork\SoundManager.cs" />
+    <Compile Include="Assets\__Script\FramWork\_SceneManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Prefab\Common\temp.txt" />
