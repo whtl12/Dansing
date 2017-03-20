@@ -18,9 +18,8 @@ public class _SceneManager : MonoBehaviour {
 
     void Start()
     {
-        StartCoroutine( FirstStartGame());
         DontDestroyOnLoad(this);
-
+        StartCoroutine( FirstStartGame());
     }
 
     protected SceneName NowScene{
@@ -54,11 +53,17 @@ public class _SceneManager : MonoBehaviour {
     IEnumerator FirstStartGame()
     {
         //Splash 진행중.
+
+        while (!DocsDown.IsEndDocsDown)
+        {
+            yield return null;
+        }
+
         yield return new WaitForSeconds(2.0f);
 
         ChangeScene( SceneName.Intro);
 
-        while (!GameDefine.IsLoadAssetBundleOK || !GameDefine.IsLoadAssetBundleOK)
+        while (!GameDefine.IsLoadDataDocs || !GameDefine.IsLoadAssetBundleOK)
         {
             yield return null;
         }

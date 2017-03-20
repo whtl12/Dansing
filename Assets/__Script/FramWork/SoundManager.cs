@@ -15,7 +15,7 @@ public class SoundManager : MonoBehaviour {
 
     public static SoundManager instance;
 
-    public Dictionary<string,AudioClip> m_AudioClip;
+    public Dictionary<SoundName, AudioClip> m_AudioClip;
 
     // Use this for initialization
     void Awake () {
@@ -39,7 +39,7 @@ public class SoundManager : MonoBehaviour {
 
             AudioClip playClip = new AudioClip();
 
-            foreach (KeyValuePair<string,AudioClip> audio in m_AudioClip)
+            foreach (KeyValuePair<SoundName,AudioClip> audio in m_AudioClip)
             {
                 if (soundInfo.Name == audio.Key)
                 {

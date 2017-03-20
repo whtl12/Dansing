@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class LoadAssetBundle : MonoBehaviour {
 
 
@@ -33,11 +34,21 @@ public class LoadAssetBundle : MonoBehaviour {
             AssetBundle bundle = www.assetBundle;
 
             Object[] SoundLoad = bundle.LoadAllAssets();
-            Dictionary<string,AudioClip> Audio = new Dictionary<string, AudioClip>();
+            Dictionary<SoundManager.SoundName,AudioClip> Audio = new Dictionary<SoundManager.SoundName, AudioClip>();
             for(int i = 0; i < SoundLoad.Length; i++)
             {
                 AudioClip audio = (AudioClip)SoundLoad[i];
-                Audio.Add(audio.name, audio);
+
+                SoundManager.SoundName name = SoundManager.SoundName.MAX;
+                if (Utils.IsEnumParseName(typeof(SoundManager.SoundName), audio.name))
+                    name = (SoundManager.SoundName)System.Enum.Parse(typeof(SoundManager.SoundName), audio.name);
+                else
+                    name = SoundManager.SoundName.MAX;
+
+                if (name != SoundManager.SoundName.MAX)
+                    Audio.Add(name, audio);
+                else
+                    Debug.LogError("SoundName Error! => " + audio.name);
             }
 
             SoundManager.instance.m_AudioClip = Audio;

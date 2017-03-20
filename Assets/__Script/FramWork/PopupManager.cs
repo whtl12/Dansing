@@ -19,9 +19,8 @@ public class PopupManager : _SceneManager {
 
 	// Use this for initialization
 	void Start () {
-        instance = this;
         DontDestroyOnLoad(this);
-
+        instance = this;
     }
 	
 	// Update is called once per frame
