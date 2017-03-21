@@ -22,6 +22,15 @@ public class StoryUIDesineCSV
 
 }
 
+public class TalkCSV {
+    public int Title;
+    public string Character;
+    public int Number;
+    public string Start;
+    public string End;
+}
+
+
 #endregion
 
 
@@ -77,6 +86,24 @@ public class StoryUIDesineInfo
     }
 }
 
+public class TalkInfo {
+    public int Title;
+    public string Character;
+    public int Number;
+    public string Start;
+    public string End;
+
+    public TalkInfo(TalkCSV csv)
+    {
+        Title = csv.Title;
+        Character = csv.Character;
+        Number = csv.Number;
+        Start = csv.Start;
+        End = csv.End;
+    }
+}
+
+
 #endregion
 
 
@@ -86,6 +113,7 @@ public class DataMgr : MonoBehaviour {
 
     private List<SoundInfo> m_SoundTable = new List<SoundInfo>();
     private List<StoryUIDesineInfo> m_StoryUIDesineTable = new List<StoryUIDesineInfo>();
+    private List<TalkInfo> m_TalkTable = new List<TalkInfo>();
 
     // Use this for initialization
     void Awake () {
@@ -123,6 +151,21 @@ public class DataMgr : MonoBehaviour {
                 {
                     StoryUIDesineInfo data = new StoryUIDesineInfo(infos[i]);
                     m_StoryUIDesineTable.Add(data);
+                }
+              //  GameDefine.IsLoadDataDocs = true;
+            }
+
+        });
+
+        WWWData.RequestReadFromGoogleDrive((int)DocsDown.DocsNumber.Talk, (WWWData docs) =>
+        {
+            TalkCSV[] infos = Utils.GetInstance_Docs<TalkCSV[]>(docs.Lines);
+            if (infos.Length > 0)
+            {
+                for (int i = 0; i < infos.Length; i++)
+                {
+                    TalkInfo data = new TalkInfo(infos[i]);
+                    m_TalkTable.Add(data);
                 }
                 GameDefine.IsLoadDataDocs = true;
             }
