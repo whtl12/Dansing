@@ -13,7 +13,7 @@ public class SoundSCV
 
 public class StoryUIDesineCSV
 {
-    public int Title;
+    public string Stage;
     public int Step;
     public string Desc_Korea;
     public string Desc_Eng;
@@ -23,11 +23,19 @@ public class StoryUIDesineCSV
 }
 
 public class TalkCSV {
-    public int Title;
+    public string Stage;
     public string Character;
     public int Number;
     public string Start;
     public string End;
+}
+
+public class StageMapSettingCSV
+{
+    public string Type;
+    public string Name;
+    public int index;
+    public string Stage;
 }
 
 
@@ -68,7 +76,7 @@ public class SoundInfo
 
 public class StoryUIDesineInfo
 {
-    public int Title; // 큰장 1장, 2장...
+    public DataMgr.Stage Stage; // 큰장 1장, 2장...
     public int Step;
     public string Desc_Korea;
     public string Desc_Eng;
@@ -77,7 +85,10 @@ public class StoryUIDesineInfo
 
     public StoryUIDesineInfo(StoryUIDesineCSV csv)
     {
-        Title = csv.Title;
+        if (Utils.IsEnumParseName(typeof(DataMgr.Stage), csv.Stage))
+            Stage = (DataMgr.Stage)Enum.Parse(typeof(DataMgr.Stage), csv.Stage);
+        else
+            Stage = DataMgr.Stage.Tutorial;
         Step = csv.Step;
         Desc_Korea = csv.Desc_Korea;
         Desc_Eng = csv.Desc_Eng;
@@ -87,7 +98,7 @@ public class StoryUIDesineInfo
 }
 
 public class TalkInfo {
-    public int Title;
+    public DataMgr.Stage Stage;
     public string Character;
     public int Number;
     public string Start;
@@ -95,7 +106,10 @@ public class TalkInfo {
 
     public TalkInfo(TalkCSV csv)
     {
-        Title = csv.Title;
+        if (Utils.IsEnumParseName(typeof(DataMgr.Stage), csv.Stage))
+            Stage = (DataMgr.Stage)Enum.Parse(typeof(DataMgr.Stage), csv.Stage);
+        else
+            Stage = DataMgr.Stage.Tutorial;
         Character = csv.Character;
         Number = csv.Number;
         Start = csv.Start;
@@ -103,17 +117,57 @@ public class TalkInfo {
     }
 }
 
+public class StageMapSettingInfo
+{
+    public enum MapType
+    {
+        Load,
+        House,
+        None
+    }
 
+    public MapType Type;
+    public string Name;
+    public int index;
+    public DataMgr.Stage Stage;
+
+    public StageMapSettingInfo(StageMapSettingCSV csv)
+    {
+        if (Utils.IsEnumParseName(typeof(DataMgr.Stage), csv.Stage))
+            Stage = (DataMgr.Stage)Enum.Parse(typeof(DataMgr.Stage), csv.Stage);
+        else
+            Stage = DataMgr.Stage.Tutorial;
+
+        Name = csv.Name;
+        index = csv.index;
+
+        if (Utils.IsEnumParseName(typeof(MapType), csv.Type))
+            Type = (MapType)Enum.Parse(typeof(MapType), csv.Type);
+        else
+            Type = MapType.None;
+
+    }
+}
 #endregion
 
 
 public class DataMgr : MonoBehaviour {
+
+    public enum Stage
+    {
+        Tutorial,
+        Mode1,
+        Mode2,
+        Mode3,
+        Mode4
+    }
 
     public static DataMgr instance;
 
     private List<SoundInfo> m_SoundTable = new List<SoundInfo>();
     private List<StoryUIDesineInfo> m_StoryUIDesineTable = new List<StoryUIDesineInfo>();
     private List<TalkInfo> m_TalkTable = new List<TalkInfo>();
+    private List<StageMapSettingInfo> m_StageMapSettingTable = new List<StageMapSettingInfo>();
 
     // Use this for initialization
     void Awake () {
@@ -166,6 +220,21 @@ public class DataMgr : MonoBehaviour {
                 {
                     TalkInfo data = new TalkInfo(infos[i]);
                     m_TalkTable.Add(data);
+                }
+               // GameDefine.IsLoadDataDocs = true;
+            }
+
+        });
+
+        WWWData.RequestReadFromGoogleDrive((int)DocsDown.DocsNumber.StageMapSetting, (WWWData docs) =>
+        {
+            StageMapSettingCSV[] infos = Utils.GetInstance_Docs<StageMapSettingCSV[]>(docs.Lines);
+            if (infos.Length > 0)
+            {
+                for (int i = 0; i < infos.Length; i++)
+                {
+                    StageMapSettingInfo data = new StageMapSettingInfo(infos[i]);
+                    m_StageMapSettingTable.Add(data);
                 }
                 GameDefine.IsLoadDataDocs = true;
             }

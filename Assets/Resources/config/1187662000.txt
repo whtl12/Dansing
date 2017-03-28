@@ -1,1 +1,1 @@
-[{"Title":"1","Character":"Runa","Number":"1","Start":"FALSE","End":"0"}]
+[{"Stage":"Mode1","Character":"Runa","Number":"1","Start":"FALSE","End":"0"}]

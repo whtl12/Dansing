@@ -69,6 +69,7 @@ public class _SceneManager : MonoBehaviour {
         }
 
         ChangeScene(SceneName.OutGame);
+
     }
 
    

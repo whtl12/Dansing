@@ -12,6 +12,7 @@ public class DocsDown : MonoBehaviour {
         Sound = 0,
         StoryUIDesine = 923849699,
         Talk = 1187662000,
+        StageMapSetting = 1850404375,
         Max
     }
 
@@ -22,6 +23,7 @@ public class DocsDown : MonoBehaviour {
         DownroadDocsData();
 
 #else
+          DownroadDocsData();
         if(PlayerPrefs.GetInt("DocsDown") == 0)
         {
             DownroadDocsData();
@@ -36,6 +38,7 @@ public class DocsDown : MonoBehaviour {
     }
 	
     const string GoogleSheetBaseUrl = "https://docs.google.com/spreadsheet/pub?key={0}&single=true&output=csv&gid={1}";
+
 
     public void DownloadAndSave(string key)
     {
@@ -55,7 +58,17 @@ public class DocsDown : MonoBehaviour {
             string url = string.Format(GoogleSheetBaseUrl, key, id);
             WWW www = new WWW(url);
             while (www.isDone == false) ;
-            string path = string.Format("{0}/Resources/config/{1}.txt", Application.dataPath, id);
+
+            string name = "";
+#if UNITY_EDITOR
+            name = string.Format("Resources/config/{0}.txt", id);
+#else
+            name = id.ToString();
+#endif
+
+            string path = GameDefine.pathForDocumentsFile(name);
+
+            Debug.Log("Docs path URL => " + path);
 
 #if UNITY_EDITOR
             //CLog.Log(string.Format("###################### DownloadAndSave / id = {0} / www.text = {1}", id, www.text));

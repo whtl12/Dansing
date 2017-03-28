@@ -133,12 +133,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\ProtoType\AllStarCharacterLibrary\Scripts\Editor\TurnOffRenderers.cs" />
+    <Compile Include="Assets\__Script\FramWork\Unity-Logs-Viewer\Reporter\Editor\ReporterEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Prefab\Common\temp.txt" />
     <None Include="Assets\Resources\config\0.txt" />
     <None Include="Assets\Resources\config\1187662000.txt" />
+    <None Include="Assets\Resources\config\1850404375.txt" />
     <None Include="Assets\Resources\config\923849699.txt" />
+    <None Include="Assets\StreamingAssets\build_info.txt" />
     <None Include="Assets\_GraphicResources\_New\temp.txt" />
     <None Include="Assets\__Script\InGame\temp.txt" />
     <None Include="Assets\__Script\OutGame\temp.txt" />

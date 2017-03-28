@@ -13,10 +13,12 @@ public class LoadAssetBundle : MonoBehaviour {
 
     void Start()
     {
+
+        string path = "/sound";
 #if UNITY_EDITOR
-        BundleURL = "file://" + Application.dataPath + "/StreamingAssets/sound";//
+        BundleURL = "file://"+ Application.streamingAssetsPath + path;// GameDefine.pathForDocumentsFile("StreamingAssets/"+ path); //"file://" + Application.dataPath + "/StreamingAssets/sound";//
 #else
-        "jar:file://" + Application.dataPath + "!/StreamingAssets/sound.unity3d";// "jar:file://" + Application.dataPath + "!/assets/bundle.unity3d";
+        BundleURL = Application.streamingAssetsPath + path;
 #endif
         StartCoroutine(LoadBundles());
     }
@@ -27,6 +29,7 @@ public class LoadAssetBundle : MonoBehaviour {
             yield return null;
         using (WWW www = WWW.LoadFromCacheOrDownload(BundleURL, version))
         {
+            Debug.Log("Sound Bundle URL => " + BundleURL);
             yield return www;
             if (www.error != null)
                 Debug.Log("WWW 다운로드에 에러가 생겼습니다.:" + www.error);
@@ -58,7 +61,7 @@ public class LoadAssetBundle : MonoBehaviour {
             www.Dispose();
             GameDefine.IsLoadAssetBundleOK = true;
 
-
+            Debug.Log("sound sucess");
 
         }
     }

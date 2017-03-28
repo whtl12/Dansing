@@ -109,13 +109,20 @@
     <Compile Include="Assets\__Script\FramWork\LoadAssetBundle.cs" />
     <Compile Include="Assets\__Script\FramWork\PopupManager.cs" />
     <Compile Include="Assets\__Script\FramWork\SoundManager.cs" />
+    <Compile Include="Assets\__Script\FramWork\Unity-Logs-Viewer\Reporter\MultiKeyDictionary.cs" />
+    <Compile Include="Assets\__Script\FramWork\Unity-Logs-Viewer\Reporter\Reporter.cs" />
+    <Compile Include="Assets\__Script\FramWork\Unity-Logs-Viewer\Reporter\ReporterGUI.cs" />
+    <Compile Include="Assets\__Script\FramWork\Unity-Logs-Viewer\Reporter\ReporterMessageReceiver.cs" />
     <Compile Include="Assets\__Script\FramWork\_SceneManager.cs" />
+    <Compile Include="Assets\__Script\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Prefab\Common\temp.txt" />
     <None Include="Assets\Resources\config\0.txt" />
     <None Include="Assets\Resources\config\1187662000.txt" />
+    <None Include="Assets\Resources\config\1850404375.txt" />
     <None Include="Assets\Resources\config\923849699.txt" />
+    <None Include="Assets\StreamingAssets\build_info.txt" />
     <None Include="Assets\_GraphicResources\_New\temp.txt" />
     <None Include="Assets\__Script\InGame\temp.txt" />
     <None Include="Assets\__Script\OutGame\temp.txt" />
